@@ -1,16 +1,20 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
 
-const Header = () => {
-  const [countdown, setCountdown] = useState(60);
+const Header = ({ countdown }) => {
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCountdown((prevCountdown) =>
-        prevCountdown > 0 ? prevCountdown - 1 : 60
-      );
-    }, 1000);
+    if (countdown === 1) {
+      const fetchFromWazirApi = async () => {
+        try {
+          await axios.get("http://localhost:3000/api/v1/tickers/fetch");
+        } catch (error) {
+          console.error("Error ", error);
+        }
+      };
 
-    return () => clearInterval(timer);
-  }, []);
+      fetchFromWazirApi();
+    }
+  }, [countdown]);
   return (
     <header className="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-400">
@@ -31,14 +35,8 @@ const Header = () => {
         <div className="w-10 h-10 sm:w-12 sm:h-12 bg-teal-400 rounded-full flex items-center justify-center text-lg sm:text-xl font-bold font-mono">
           {countdown}
         </div>
-        <button className="bg-teal-400 text-gray-900 px-3 py-2 sm:px-4 sm:py-2 rounded-lg font-bold flex items-center text-sm sm:text-base">
-          <svg
-            className="w-4 h-4 sm:w-6 sm:h-6 mr-2"
-            viewBox="0 0 24 24"
-            fill="currentColor"
-          >
-            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14h-2v-6h2v6zm4 0h-2V7h2v9z" />
-          </svg>
+        <button className="bg-teal-400 text-gray-900 px-3 py-2 sm:px-4 sm:py-1 rounded-lg font-bold flex items-center text-sm sm:text-base">
+          <i class="text-lg ri-telegram-2-fill mr-3"></i>
           Connect Telegram
         </button>
       </div>

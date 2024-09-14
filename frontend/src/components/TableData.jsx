@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const TableData = () => {
+const TableData = ({ countdown }) => {
   const [tickers, setTickers] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -13,6 +13,17 @@ const TableData = () => {
 
     fetchData();
   }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await axios.get(
+        "http://localhost:3000/api/v1/tickers/get-tickers"
+      );
+      setTickers(result.data);
+    };
+
+    if (countdown === 0) fetchData();
+  }, [countdown]);
   return (
     <div className="overflow-x-auto">
       <table className="w-full bg-gray-800 rounded-lg overflow-hidden mb-8">
