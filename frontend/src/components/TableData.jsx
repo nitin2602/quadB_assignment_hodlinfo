@@ -6,7 +6,7 @@ const TableData = ({ countdown, darkMode }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        "http://localhost:3000/api/v1/tickers/get-tickers"
+        "https://hodlinfo-clone-backend.vercel.app/api/v1/tickers/get-tickers"
       );
       setTickers(result.data);
     };
@@ -17,7 +17,7 @@ const TableData = ({ countdown, darkMode }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        "http://localhost:3000/api/v1/tickers/get-tickers"
+        "https://hodlinfo-clone-backend.vercel.app/api/v1/tickers/get-tickers"
       );
       setTickers(result.data);
     };
