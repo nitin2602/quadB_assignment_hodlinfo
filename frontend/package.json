@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "postinstall": "chmod -R 755 node_modules/.bin",
-    "build": "pnpm build",
+    "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
   },
