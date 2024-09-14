@@ -9,7 +9,7 @@ const Header = ({ countdown, darkMode, handleToggle }) => {
       const fetchFromWazirApi = async () => {
         try {
           await axios.get(
-            "https://hodlinfo-clone-backend.vercel.app/api/v1/tickers/fetch"
+            "https://hodlinfo-clone-self.vercel.app/api/v1/tickers/fetch"
           );
         } catch (error) {
           console.error("Error ", error);
@@ -24,7 +24,7 @@ const Header = ({ countdown, darkMode, handleToggle }) => {
     const fetchFromWazirApi = async () => {
       try {
         await axios.get(
-          "https://hodlinfo-clone-backend.vercel.app/api/v1/tickers/fetch"
+          "https://hodlinfo-clone-self.vercel.app/api/v1/tickers/fetch"
         );
       } catch (error) {
         console.error("Error ", error);

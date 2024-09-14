@@ -6,18 +6,18 @@ const TableData = ({ countdown, darkMode }) => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        "https://hodlinfo-clone-backend.vercel.app/api/v1/tickers/get-tickers"
+        "https://hodlinfo-clone-self.vercel.app/api/v1/tickers/get-tickers"
       );
       setTickers(result.data);
     };
 
-    fetchData();
+    setTimeout(fetchData(), 1500);
   }, []);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios.get(
-        "https://hodlinfo-clone-backend.vercel.app/api/v1/tickers/get-tickers"
+        "https://hodlinfo-clone-self.vercel.app/api/v1/tickers/get-tickers"
       );
       setTickers(result.data);
     };
