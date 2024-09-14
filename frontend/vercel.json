@@ -1,8 +1,9 @@
 {
-  "rewrites": [
+  "builds": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "frontend/package.json",
+      "use": "@vercel/node"
     }
-  ]
+  ],
+  "outputDirectory": "frontend/dist"
 }
