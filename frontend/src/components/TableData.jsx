@@ -51,7 +51,7 @@ const TableData = ({ countdown, darkMode }) => {
               <th className="px-4 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm md:text-base">
                 Volume
               </th>
-              <th className="px-4 py-2 sm:px-6 sm:py-4 text-center text-xs sm:text-sm md:text-base">
+              <th className="px-4 py-2 sm:px-6 sm:py-4 text-center text-xs sm:text-sm md:text-right ">
                 Base Unit
               </th>
             </tr>
@@ -67,22 +67,22 @@ const TableData = ({ countdown, darkMode }) => {
                     : "border-t border-gray-300"
                 }`}
               >
-                <td className="px-4 py-4 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
+                <td className="px-4 py-4 sm:px-6 sm:py-7 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
                   {index + 1}
                 </td>
                 <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base flex items-center whitespace-nowrap">
                   {ticker.name}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
-                  ₹ {ticker.last}s
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap text-right">
+                  ₹ {ticker.last}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap text-right">
                   ₹ {ticker.buy} / ₹ {ticker.sell}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap">
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap text-right">
                   {ticker.volume}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap">
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap text-right">
                   {ticker.base_unit}
                 </td>
               </tr>
