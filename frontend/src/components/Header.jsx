@@ -19,6 +19,19 @@ const Header = ({ countdown, darkMode, handleToggle }) => {
       fetchFromWazirApi();
     }
   }, [countdown]);
+
+  useEffect(() => {
+    const fetchFromWazirApi = async () => {
+      try {
+        await axios.get(
+          "https://hodlinfo-clone-backend.vercel.app/api/v1/tickers/fetch"
+        );
+      } catch (error) {
+        console.error("Error ", error);
+      }
+    };
+    fetchFromWazirApi();
+  }, []);
   return (
     <header className="flex flex-col sm:flex-row justify-between items-center mb-8 space-y-4 sm:space-y-0">
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-400">

@@ -24,6 +24,7 @@ const TableData = ({ countdown, darkMode }) => {
 
     if (countdown === 0) fetchData();
   }, [countdown]);
+
   return (
     <div className="overflow-x-auto">
       <table
