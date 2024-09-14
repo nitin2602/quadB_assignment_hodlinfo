@@ -22,19 +22,19 @@ const TableData = () => {
               #
             </th>
             <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
-              Platform
+              Name
             </th>
             <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
-              Last Traded Price
+              Last
             </th>
             <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
-              Buy / Sell Price
+              Buy / Sell
             </th>
             <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
-              Difference
+              Volume
             </th>
             <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
-              Savings
+              Base Unit
             </th>
           </tr>
         </thead>
@@ -55,10 +55,10 @@ const TableData = () => {
                 ₹ {ticker.buy} / ₹ {ticker.sell}
               </td>
               <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono">
-                -3.14 %
+                {ticker.volume}
               </td>
               <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono">
-                ▼ ₹ 83,498
+                {ticker.base_unit}
               </td>
             </tr>
           ))}
