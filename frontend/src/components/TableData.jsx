@@ -11,7 +11,9 @@ const TableData = ({ countdown, darkMode }) => {
       setTickers(result.data);
     };
 
-    setTimeout(fetchData(), 2500);
+    setTimeout(() => {
+      fetchData();
+    }, 4000);
   }, []);
 
   useEffect(() => {

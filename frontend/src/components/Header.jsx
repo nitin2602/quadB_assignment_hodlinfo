@@ -5,7 +5,7 @@ import "@carbon/styles/css/styles.css";
 
 const Header = ({ countdown, darkMode, handleToggle }) => {
   useEffect(() => {
-    if (countdown === 1) {
+    if (countdown === 5) {
       const fetchFromWazirApi = async () => {
         try {
           await axios.get(

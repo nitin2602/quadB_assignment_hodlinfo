@@ -10,17 +10,19 @@ router.get("/fetch", async (req, res) => {
 
     await Ticker.deleteMany({});
 
-    top10results.forEach(async (ticker) => {
-      const newTicker = new Ticker({
-        name: ticker.name,
-        last: ticker.last,
-        buy: ticker.buy,
-        sell: ticker.sell,
-        volume: ticker.volume,
-        base_unit: ticker.base_unit,
-      });
-      await newTicker.save();
-    });
+    await Promise.all(
+      top10results.map(async (ticker) => {
+        const newTicker = new Ticker({
+          name: ticker.name,
+          last: ticker.last,
+          buy: ticker.buy,
+          sell: ticker.sell,
+          volume: ticker.volume,
+          base_unit: ticker.base_unit,
+        });
+        await newTicker.save();
+      })
+    );
 
     res.send("Data stored successfully");
   } catch (err) {
