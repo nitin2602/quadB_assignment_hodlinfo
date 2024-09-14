@@ -7,6 +7,7 @@ import TableData from "./components/TableData";
 
 export default function Component() {
   const [countdown, setCountdown] = useState(60);
+  const [darkMode, setDarkMode] = useState(true);
   useEffect(() => {
     const timer = setInterval(() => {
       setCountdown((prevCountdown) =>
@@ -16,11 +17,23 @@ export default function Component() {
 
     return () => clearInterval(timer);
   }, []);
+
+  const handleToggle = (toggled) => {
+    setDarkMode(toggled);
+  };
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6 md:p-8 font-sans">
-      <Header countdown={countdown} />
+    <div
+      className={`${
+        darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
+      } min-h-screen p-4 sm:p-6 md:p-8 font-sans`}
+    >
+      <Header
+        countdown={countdown}
+        darkMode={darkMode}
+        handleToggle={handleToggle}
+      />
       <BestPrice />
-      <TableData countdown={countdown} />
+      <TableData countdown={countdown} darkMode={darkMode} />
       <Footer />
     </div>
   );

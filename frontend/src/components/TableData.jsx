@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const TableData = ({ countdown }) => {
+const TableData = ({ countdown, darkMode }) => {
   const [tickers, setTickers] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
@@ -26,8 +26,12 @@ const TableData = ({ countdown }) => {
   }, [countdown]);
   return (
     <div className="overflow-x-auto">
-      <table className="w-full bg-gray-800 rounded-lg overflow-hidden mb-8">
-        <thead className="bg-gray-700">
+      <table
+        className={`w-full ${
+          darkMode ? "bg-gray-800" : "bg-gray-200"
+        } rounded-lg overflow-hidden mb-8`}
+      >
+        <thead className={`${darkMode ? "bg-gray-700" : "bg-gray-300"}`}>
           <tr>
             <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
               #
@@ -51,12 +55,23 @@ const TableData = ({ countdown }) => {
         </thead>
         <tbody>
           {tickers.map((ticker, index) => (
-            <tr key={ticker._id} className="border-t border-gray-700">
+            <tr
+              key={ticker._id}
+              className={`${
+                darkMode
+                  ? "border-t border-gray-700"
+                  : "border-t border-gray-300"
+              }`}
+            >
               <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono">
                 {index + 1}
               </td>
               <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base flex items-center">
-                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full mr-2 sm:mr-3"></div>
+                <div
+                  className={`w-6 h-6 sm:w-8 sm:h-8 ${
+                    darkMode ? "bg-blue-500" : "bg-blue-300"
+                  } rounded-full mr-2 sm:mr-3`}
+                ></div>
                 {ticker.name}
               </td>
               <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono">

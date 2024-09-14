@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Toggle } from "@carbon/react";
+import "@carbon/styles/css/styles.css";
 
-const Header = ({ countdown }) => {
+const Header = ({ countdown, darkMode, handleToggle }) => {
   useEffect(() => {
     if (countdown === 1) {
       const fetchFromWazirApi = async () => {
@@ -20,14 +22,26 @@ const Header = ({ countdown }) => {
       <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-teal-400">
         HODLINFO
       </h1>
-      <div className="flex flex-wrap justify-center sm:justify-start items-center space-x-2 sm:space-x-4">
-        <select className="bg-gray-800 text-white px-2 py-1 sm:px-4 sm:py-2 rounded font-mono text-sm sm:text-base mb-2 sm:mb-0">
+      <div className="flex flex-wrap justify-center sm:justify-start items-center space-x-2 sm:space-x-4 ml-8">
+        <select
+          className={`${
+            darkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
+          } px-2 py-1 sm:px-4 sm:py-2 rounded font-mono text-sm sm:text-base mb-2 sm:mb-0`}
+        >
           <option>INR</option>
         </select>
-        <select className="bg-gray-800 text-white px-2 py-1 sm:px-4 sm:py-2 rounded font-mono text-sm sm:text-base mb-2 sm:mb-0">
+        <select
+          className={`${
+            darkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
+          } px-2 py-1 sm:px-4 sm:py-2 rounded font-mono text-sm sm:text-base mb-2 sm:mb-0`}
+        >
           <option>BTC</option>
         </select>
-        <button className="bg-gray-800 text-white px-2 py-1 sm:px-4 sm:py-2 rounded font-mono text-sm sm:text-base mb-2 sm:mb-0">
+        <button
+          className={`${
+            darkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
+          } px-2 py-1 sm:px-4 sm:py-2 rounded font-mono text-sm sm:text-base mb-2 sm:mb-0`}
+        >
           BUY BTC
         </button>
       </div>
@@ -39,6 +53,12 @@ const Header = ({ countdown }) => {
           <i class="text-lg ri-telegram-2-fill mr-3"></i>
           Connect Telegram
         </button>
+
+        <Toggle
+          id="dark-mode-toggle"
+          defaultToggled={darkMode}
+          onToggle={handleToggle}
+        />
       </div>
     </header>
   );
