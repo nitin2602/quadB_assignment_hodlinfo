@@ -67,22 +67,22 @@ const TableData = ({ countdown, darkMode }) => {
                     : "border-t border-gray-300"
                 }`}
               >
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono">
+                <td className="px-4 py-4 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
                   {index + 1}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-6 text-xs sm:text-sm md:text-base">
-                  <div className="flex items-center h-full">{ticker.name}</div>
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base flex items-center whitespace-nowrap">
+                  {ticker.name}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono text-right">
-                  ₹ {ticker.last}
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
+                  ₹ {ticker.last}s
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono text-right">
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
                   ₹ {ticker.buy} / ₹ {ticker.sell}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono text-right">
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap">
                   {ticker.volume}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono text-center">
+                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap">
                   {ticker.base_unit}
                 </td>
               </tr>
