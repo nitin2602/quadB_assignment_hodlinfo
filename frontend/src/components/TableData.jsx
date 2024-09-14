@@ -14,35 +14,57 @@ const TableData = () => {
     fetchData();
   }, []);
   return (
-    <table className="w-full bg-gray-800 rounded-lg overflow-hidden mb-8">
-      <thead className="bg-gray-700">
-        <tr>
-          <th className="px-6 py-4 text-left text-lg">#</th>
-          <th className="px-6 py-4 text-left text-lg">Platform</th>
-          <th className="px-6 py-4 text-left text-lg">Last Traded Price</th>
-          <th className="px-6 py-4 text-left text-lg">Buy / Sell Price</th>
-          <th className="px-6 py-4 text-left text-lg">Difference</th>
-          <th className="px-6 py-4 text-left text-lg">Savings</th>
-        </tr>
-      </thead>
-      <tbody>
-        {tickers.map((ticker, index) => (
-          <tr key={ticker._id} className="border-t border-gray-700">
-            <td className="px-6 py-4 text-lg">{index + 1}</td>
-            <td className="px-6 py-4 text-lg flex items-center">
-              <div className="w-8 h-8 bg-blue-500 rounded-full mr-3"></div>
-              {ticker.name}
-            </td>
-            <td className="px-6 py-4 text-lg">₹ {ticker.last}</td>
-            <td className="px-6 py-4 text-lg">
-              ₹ {ticker.buy} / ₹ {ticker.sell}
-            </td>
-            <td className="px-6 py-4 text-lg text-red-500">-3.14 %</td>
-            <td className="px-6 py-4 text-lg text-red-500">▼ ₹ 83,498</td>
+    <div className="overflow-x-auto">
+      <table className="w-full bg-gray-800 rounded-lg overflow-hidden mb-8">
+        <thead className="bg-gray-700">
+          <tr>
+            <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
+              #
+            </th>
+            <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
+              Platform
+            </th>
+            <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
+              Last Traded Price
+            </th>
+            <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
+              Buy / Sell Price
+            </th>
+            <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
+              Difference
+            </th>
+            <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
+              Savings
+            </th>
           </tr>
-        ))}
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          {tickers.map((ticker, index) => (
+            <tr key={ticker._id} className="border-t border-gray-700">
+              <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono">
+                {index + 1}
+              </td>
+              <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base flex items-center">
+                <div className="w-6 h-6 sm:w-8 sm:h-8 bg-blue-500 rounded-full mr-2 sm:mr-3"></div>
+                {ticker.name}
+              </td>
+              <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono">
+                ₹ {ticker.last}
+              </td>
+              <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono">
+                ₹ {ticker.buy} / ₹ {ticker.sell}
+              </td>
+              <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono">
+                -3.14 %
+              </td>
+              <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono">
+                ▼ ₹ 83,498
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
   );
 };
 

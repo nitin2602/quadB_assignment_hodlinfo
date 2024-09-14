@@ -7,7 +7,7 @@ import TableData from "./components/TableData";
 
 export default function Component() {
   return (
-    <div className="min-h-screen bg-gray-900 text-white p-9">
+    <div className="min-h-screen bg-gray-900 text-white p-4 sm:p-6 md:p-8 font-sans">
       <Header />
       <BestPrice />
       <TableData />

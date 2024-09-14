@@ -6,11 +6,11 @@ const axios = require("axios");
 router.get("/fetch", async (req, res) => {
   try {
     const { data } = await axios.get("https://api.wazirx.com/api/v2/tickers");
-    const top10 = Object.values(data).slice(0, 10);
+    const top10results = Object.values(data).slice(0, 10);
 
     await Ticker.deleteMany({});
 
-    top10.forEach(async (ticker) => {
+    top10results.forEach(async (ticker) => {
       const newTicker = new Ticker({
         name: ticker.name,
         last: ticker.last,
