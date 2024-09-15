@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import BestPrice from "./components/BestPrice";
 import TableData from "./components/TableData";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function Component() {
   const [countdown, setCountdown] = useState(60);
@@ -35,6 +36,7 @@ export default function Component() {
       <BestPrice />
       <TableData countdown={countdown} darkMode={darkMode} />
       <Footer />
+      <Analytics />
     </div>
   );
 }
