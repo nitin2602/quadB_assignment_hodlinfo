@@ -11,7 +11,7 @@ const TickerTable = ({ countdown, isDarkMode }) => {
   useEffect(() => {
     const fetchTickersData = async () => {
       try {
-        const response = await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/tickers");
+        const response = await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/api/tickers");
         setTickersData(response.data); // Store the fetched data in the state
       } catch (error) {
         console.error("Error fetching tickers data:", error);
@@ -25,7 +25,7 @@ const TickerTable = ({ countdown, isDarkMode }) => {
   useEffect(() => {
     const fetchTickersData = async () => {
       try {
-        const response = await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/tickers");
+        const response = await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/api/tickers");
         setTickersData(response.data);
       } catch (error) {
         console.error("Error fetching tickers data:", error);
