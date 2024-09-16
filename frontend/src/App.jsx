@@ -1,3 +1,8 @@
+//Assignment completed by Nitin Tripathi
+//Assignment completed by Nitin Tripathi
+//Assignment completed by Nitin Tripathi
+//Assignment completed by Nitin Tripathi
+
 import React, { useEffect, useState } from "react";
 
 import Header from "./components/Header";
@@ -26,7 +31,7 @@ export default function Component() {
     <div
       className={`${
         darkMode ? "bg-gray-900 text-white" : "bg-white text-gray-900"
-      } min-h-screen p-4 sm:p-6 md:p-8 font-sans`}
+      } min-h-screen p-4 sm:p-6 md:p-8 font-oswald`}
     >
       <Header
         countdown={countdown}
@@ -34,9 +39,11 @@ export default function Component() {
         handleToggle={handleToggle}
       />
       <BestPrice />
-      <TableData countdown={countdown} darkMode={darkMode} />
+      <TableData countdown={countdown} isDarkMode={darkMode} />
       <Footer />
       <Analytics />
     </div>
   );
 }
+
+//Assignement completed by Nitin Tripathi

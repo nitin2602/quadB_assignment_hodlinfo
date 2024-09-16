@@ -1,40 +1,58 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const TableData = ({ countdown, darkMode }) => {
-  const [tickers, setTickers] = useState([]);
+// TickerTable Component to display data with responsiveness and dark mode support
+const TickerTable = ({ countdown, isDarkMode }) => {
+  // State to store the fetched ticker data
+  const [tickersData, setTickersData] = useState([]);
+  console.log(isDarkMode);
 
+  // Fetch ticker data when the component mounts
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(
-        "https://hodlinfo-clone-self.vercel.app/api/v1/tickers/get-tickers"
-      );
-      setTickers(result.data);
+    const fetchTickersData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/tickers");
+        setTickersData(response.data); // Store the fetched data in the state
+      } catch (error) {
+        console.error("Error fetching tickers data:", error);
+      }
     };
 
-    fetchData();
+    fetchTickersData();
   }, []);
 
+  // Fetch new data when the countdown reaches zero
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await axios.get(
-        "https://hodlinfo-clone-self.vercel.app/api/v1/tickers/get-tickers"
-      );
-      setTickers(result.data);
+    const fetchTickersData = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/tickers");
+        setTickersData(response.data);
+      } catch (error) {
+        console.error("Error fetching tickers data:", error);
+      }
     };
 
-    if (countdown === 0) fetchData();
+    if (countdown === 0) fetchTickersData();
   }, [countdown]);
 
+  // Format number with commas
+  const formatNumber = (num) => {
+    if (typeof num === 'number') {
+      return num.toLocaleString();
+    }
+    return num; // In case it's not a number
+  };
+
   return (
-    <div className="overflow-x-auto">
-      {tickers.length > 0 ? (
+    <div className="overflow-x-auto w-full">
+      {tickersData.length > 0 ? (
         <table
           className={`w-full table-auto ${
-            darkMode ? "bg-gray-800" : "bg-gray-200"
-          } rounded-lg overflow-hidden mb-8`}
+            isDarkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-black"
+          } rounded-lg mb-8`}
         >
-          <thead className={`${darkMode ? "bg-gray-700" : "bg-gray-300"}`}>
+          {/* Table Header */}
+          <thead className={`${isDarkMode ? "bg-gray-700" : "bg-gray-300"}`}>
             <tr>
               <th className="px-4 py-2 sm:px-6 sm:py-4 text-left text-xs sm:text-sm md:text-base">
                 #
@@ -43,7 +61,7 @@ const TableData = ({ countdown, darkMode }) => {
                 Name
               </th>
               <th className="px-4 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm md:text-base">
-                Last
+                Last Price
               </th>
               <th className="px-4 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm md:text-base">
                 Buy / Sell
@@ -51,53 +69,68 @@ const TableData = ({ countdown, darkMode }) => {
               <th className="px-4 py-2 sm:px-6 sm:py-4 text-right text-xs sm:text-sm md:text-base">
                 Volume
               </th>
-              <th className="px-4 py-2 sm:px-6 sm:py-4 text-center text-xs sm:text-sm md:text-right ">
+              <th className="px-4 py-2 sm:px-6 sm:py-4 text-center text-xs sm:text-sm md:text-right">
                 Base Unit
               </th>
             </tr>
           </thead>
 
+          {/* Table Body */}
           <tbody>
-            {tickers.map((ticker, index) => (
+            {tickersData.map((ticker, index) => (
               <tr
                 key={ticker._id}
                 className={`${
-                  darkMode
+                  isDarkMode
                     ? "border-t border-gray-700"
                     : "border-t border-gray-300"
                 }`}
               >
+                {/* Table Row: Index */}
                 <td className="px-4 py-4 sm:px-6 sm:py-7 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap">
                   {index + 1}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base flex items-center whitespace-nowrap">
+
+                {/* Table Row: Ticker Name */}
+                <td className="px-4 py-2 font-semibold sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base flex items-center whitespace-nowrap">
                   {ticker.name}
                 </td>
+
+                {/* Table Row: Last Price */}
                 <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap text-right">
-                  ₹ {ticker.last}
+                  ₹ {formatNumber(ticker.last)}
                 </td>
+
+                {/* Table Row: Buy / Sell Prices */}
                 <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base font-mono whitespace-nowrap text-right">
-                  ₹ {ticker.buy} / ₹ {ticker.sell}
+                  ₹ {formatNumber(ticker.buy)} / ₹ {formatNumber(ticker.sell)}
                 </td>
+
+                {/* Table Row: Volume */}
                 <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap text-right">
-                  {ticker.volume}
+                  {formatNumber(ticker.volume)}
                 </td>
-                <td className="px-4 py-2 sm:px-6 sm:py-4 text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap text-right">
-                  {ticker.base_unit}
+
+                {/* Table Row: Base Unit */}
+                <td className="px-4 py-2 sm:px-6 sm:py-4 font-bold text-xs sm:text-sm md:text-base text-red-500 font-mono whitespace-nowrap text-right">
+                  {ticker.baseUnit}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
       ) : (
-        <img
-          className="w-full h-10 animate-spin ease-linear"
-          src="/loading.svg"
-          alt="Loading icon"
-        ></img>
+        // Loading spinner while fetching data
+        <div className="flex justify-center items-center py-6">
+          <img
+            className="w-10 h-10 animate-spin ease-linear"
+            src="/loading.svg"
+            alt="Loading"
+          />
+        </div>
       )}
     </div>
   );
 };
 
-export default TableData;
+export default TickerTable;
