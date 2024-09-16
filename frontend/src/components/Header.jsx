@@ -22,7 +22,7 @@ const Header = ({ countdown, darkMode, handleToggle }) => {
     if (countdown === 5) {
       const fetchFromWazirApi = async () => {
         try {
-          await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/fetch-tickers");
+          await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/api/fetch-tickers");
         } catch (error) {
           console.error("Error ", error);
         }
@@ -35,7 +35,7 @@ const Header = ({ countdown, darkMode, handleToggle }) => {
   useEffect(() => {
     const fetchFromWazirApi = async () => {
       try {
-        await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/fetch-tickers");
+        await axios.get("https://quad-b-assignment-hodlinfo.vercel.app/api/fetch-tickers");
       } catch (error) {
         console.error("Error ", error);
       }
