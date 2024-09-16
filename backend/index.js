@@ -13,7 +13,7 @@ app.get("/", async (req, res) => {
   res.send("hey");
 });
 // Fetch top 10 tickers from WazirX API and store them in PostgreSQL
-app.get("/fetch-tickers", async (req, res) => {
+app.get("/api/fetch-tickers", async (req, res) => {
   try {
     // Fetch data from WazirX API
     const response = await axios.get("https://api.wazirx.com/api/v2/tickers");
@@ -53,7 +53,7 @@ app.get("/fetch-tickers", async (req, res) => {
 });
 
 // Get tickers from the PostgreSQL database
-app.get("/tickers", async (req, res) => {
+app.get("/api/tickers", async (req, res) => {
   try {
     const tickers = await prisma.ticker.findMany();
     res.status(200).json(tickers);
